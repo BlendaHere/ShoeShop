@@ -47,4 +47,27 @@ use shoeshop
  Known for its innovative designs and high-quality products','nike.png','"https://www.nike.com"');
 
  select * from Brand
+ 
+ /*tabela e Llogaris se Klientit*/
+
+ create table ClientAccount
+ (
+ ClientId int identity (1,1),
+ FirstName varchar(500),
+ LastName varchar(500),
+ Email varchar(500),
+ Password varchar(500),
+ Address varchar(500),
+ City varchar(500),
+ PostalCode varchar(500),
+ PhoneNumber varchar(500),
+ Gender varchar(500),
+ );
+
+ insert into ClientAccount 
+ values('Anesa','Zhegrova','anesazhegrova@gmail.com','anesa1234','Dobraje e Madhe',
+        'Lipjan','10000','049587512','Femer');
+
+select * from ClientAccount
+ 
 
