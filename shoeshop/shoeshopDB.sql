@@ -27,7 +27,24 @@ use shoeshop
  ImageOfCategory varchar(500)
  );
 
- insert into Category values('Men-s shoes','Our Men-s Shoes category includes a wide selection of shoes for men,
+ insert into Category values('Man-s shoes','Our Man-s Shoes category includes a wide selection of shoes for men,
  including dress shoes, casual shoes, boots, and athletic shoes. 
  Whether you are looking for something for work or play, we have got you covered.','categroy1.png');
+ 
+ select *from Category
+
+ /*Tabela per Brendet*/
+ create table Brand
+ (
+ BrandId int identity (1,1),
+ BrandName varchar(500),
+ BrandDescription varchar(500),
+ ImageOfLogo varchar(500),
+ Website varchar (500)
+ );
+
+ insert into Brand values ('Nike','Nike is a multinational corporation that designs and develops athletic footwear, apparel, and accessories.
+ Known for its innovative designs and high-quality products','nike.png','"https://www.nike.com"');
+
+ select * from Brand
 
