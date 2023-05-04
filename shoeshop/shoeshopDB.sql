@@ -1,6 +1,6 @@
 CREATE DATABASE shoeshop
 use shoeshop
- /*tabela product*/
+ /*tabela e produktit*/
  create table Product
  (
  ProductId int identity(1,1),
