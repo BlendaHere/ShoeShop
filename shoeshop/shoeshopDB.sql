@@ -69,5 +69,25 @@ use shoeshop
         'Lipjan','10000','049587512','Femer');
 
 select * from ClientAccount
+
+
+/*Tabela e porosive*/
+
+create table ClientOrder
+(
+OrderId int identity(1,1),
+OrderDate Date ,
+ClientId int,
+ProductId int,
+Quantity int,
+Size varchar(500),
+Color varchar(500),
+Price decimal,
+PaymentMethod varchar(500)
+);
+insert into ClientOrder values ('12/02/2023','1','1','5','38','Black','35.70','PayPal');
+
+select * from ClientOrder
+
  
 
