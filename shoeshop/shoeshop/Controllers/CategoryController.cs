@@ -28,7 +28,7 @@ namespace shoeshop.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select CategoryId,CategoryName,
+                            select CategroyId,CategoryName,
                                    CategoryDescription,ImageOfCategory
                               from Category ";
 
@@ -84,8 +84,8 @@ namespace shoeshop.Controllers
                            update Category
                            set CategoryName= @CategoryName,
                             CategoryDescription=@CategoryDescription,
-                            ImageOfCategory=@ImageOfCategory,
-                            where CategoryId=@CategoryId
+                            ImageOfCategory=@ImageOfCategory
+                            where CategroyId=@CategroyId
                             ";
 
 
@@ -97,7 +97,7 @@ namespace shoeshop.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@CategoryId", cat.CategoryId);
+                    myCommand.Parameters.AddWithValue("@CategroyId", cat.CategroyId);
                     myCommand.Parameters.AddWithValue("@CategoryName", cat.CategoryName);
                     myCommand.Parameters.AddWithValue("@CategoryDescription", cat.CategoryDescription);
                     myCommand.Parameters.AddWithValue("@ImageOfCategory", cat.ImageOfCategory);
@@ -116,7 +116,7 @@ namespace shoeshop.Controllers
         {
             string query = @"
                            delete from Category
-                            where CategoryId=@CategoryId
+                            where CategroyId=@CategroyId
                             ";
 
             DataTable table = new DataTable();
@@ -127,7 +127,7 @@ namespace shoeshop.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@CategoryId", id);
+                    myCommand.Parameters.AddWithValue("@CategroyId", id);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -167,4 +167,3 @@ namespace shoeshop.Controllers
 
     } 
 }
-
