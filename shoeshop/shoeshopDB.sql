@@ -90,5 +90,20 @@ insert into ClientOrder values ('2023-5-5','1','1','5','38','Black','35.70','Pay
 
 select * from ClientOrder
 
+
+--Tabela e WishList-es
+
+CREATE TABLE WishList (
+
+  WishListId int identity(1,1), 
+  ProductName VARCHAR (50)  NOT NULL ,
+  ProductDescription VARCHAR(250),
+  Price DECIMAL(10,2) NOT NULL
+);
+
+ insert into WishList
+ values('Nike Air Max', 'Running shoes with air cushioning technology', 99.99)
+
+select * from WishList
  
 
