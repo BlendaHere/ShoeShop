@@ -106,4 +106,68 @@ CREATE TABLE WishList (
 
 select * from WishList
  
+ --Tabela e Delivery
+CREATE TABLE Delivery (
+  DeliveryId int IDENTITY(1,1),
+  OrderId int NOT NULL,
+  DeliveryDate datetime NOT NULL,
+  DeliveryAddress varchar(100) NOT NULL,
+  DeliveryStatus varchar(50) NOT NULL
+);
+
+INSERT INTO Delivery (OrderId, DeliveryDate, DeliveryAddress, DeliveryStatus)
+VALUES (1, '2023-05-05', ' Muharrem Fejza', 'Pending');
+
+select * from Delivery
+
+
+--Tabela e Blog-ut
+
+CREATE TABLE Blog (
+  BlogId INT IDENTITY(1,1),
+  Title VARCHAR(100) NOT NULL,
+  Author VARCHAR(50) NOT NULL,
+  DatePosted DATE NOT NULL,
+  Content TEXT NOT NULL,
+  ImageName  VARCHAR(200)
+);
+
+INSERT INTO Blog (Title, Author, DatePosted, Content, ImageName )
+VALUES ('First Blog Post', 'Era', '2022-05-16', 'Celebrity shoe styles: Get the look for less', 'blog1.png');
+select * from Blog   
+
+
+--Tabela e Inspiration 
+
+CREATE TABLE Inspiration (
+  PostId INT IDENTITY(1,1),
+  Title VARCHAR(500) NOT NULL,
+  DatePosted DATE NOT NULL,
+  Description VARCHAR(500) NOT NULL,
+  ImageName VARCHAR(100) NOT NULL
+);
+
+INSERT INTO Inspiration (Title, DatePosted, Description, ImageName)
+VALUES ('Find the perfect pair of running shoes for your next marathon', '2023-05-05', 'When you want to feel like you are running on fluffy clouds, these shoes are the ones.', 'insp1.png')
+select * from Inspiration
+
+
+--Tabela e Staff-it
+
+CREATE TABLE Staff (
+  StaffId INT IDENTITY(1,1),
+  FirstName VARCHAR(50) NOT NULL,
+  LastName VARCHAR(50) NOT NULL,
+  Email VARCHAR(100) UNIQUE NOT NULL,
+  HireDate DATETIME NOT NULL,
+  Position VARCHAR(100) NOT NULL,
+  EmploymentStatus VARCHAR(10) NOT NULL,
+  ImageName VARCHAR(100) NULL
+
+);
+
+INSERT INTO Staff (FirstName, LastName, Email, HireDate, Position, EmploymentStatus,ImageName)
+VALUES ('Blendiona', 'Biqkaj', 'blendionabiqkaj3@gmail.com', '2022-01-01', 'Manager', 'Active','blendiona1.png');
+
+select * from Staff
 
