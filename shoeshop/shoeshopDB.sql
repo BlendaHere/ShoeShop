@@ -76,7 +76,7 @@ select * from ClientAccount
 create table ClientOrder
 (
 OrderId int identity(1,1),
-OrderDate Date ,
+OrderDate datetime ,
 ClientId int,
 ProductId int,
 Quantity int,
@@ -85,7 +85,8 @@ Color varchar(500),
 Price decimal,
 PaymentMethod varchar(500)
 );
-insert into ClientOrder values ('12/02/2023','1','1','5','38','Black','35.70','PayPal');
+insert into ClientOrder values ('2023-5-5','1','1','5','38','Black','35.70','PayPal');
+
 
 select * from ClientOrder
 
