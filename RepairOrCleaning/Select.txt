@@ -1,0 +1,35 @@
+CREATE TABLE OrderForRepairOrCleaning (
+    OrderId INT PRIMARY KEY,
+    CustomerName VARCHAR(100),
+    ShoeBrand VARCHAR(50),
+    ShoeColor VARCHAR(50),
+    RepairOrCleaningType VARCHAR(50),
+    OrderDate DATE,
+    IsCompleted BIT
+);
+
+[HttpGet]
+public JsonResult Get()
+{
+    string query = @"
+        SELECT OrderId, CustomerName, ShoeBrand, ShoeColor, RepairOrCleaningType,
+        CONVERT(varchar(10), OrderDate, 120) AS OrderDate, IsCompleted
+        FROM OrderForRepairOrCleaning";
+
+    DataTable table = new DataTable();
+    string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+    SqlDataReader myReader;
+    using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+    {
+        myCon.Open();
+        using (SqlCommand myCommand = new SqlCommand(query, myCon))
+        {
+            myReader = myCommand.ExecuteReader();
+            table.Load(myReader);
+            myReader.Close();
+            myCon.Close();
+        }
+    }
+
+    return new JsonResult(table);
+}

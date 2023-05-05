@@ -1,0 +1,21 @@
+[HttpDelete("{id}")]
+public JsonResult Delete(int id)
+{
+    string query = @"
+        DELETE FROM OrderForRepairOrCleaning
+        WHERE OrderId = @OrderId";
+
+    string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+    using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+    {
+        myCon.Open();
+        using (SqlCommand myCommand = new SqlCommand(query, myCon))
+        {
+            myCommand.Parameters.AddWithValue("@OrderId", id);
+
+            myCommand.ExecuteNonQuery();
+        }
+    }
+
+    return new JsonResult("Deleted Successfully");
+}

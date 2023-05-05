@@ -1,0 +1,29 @@
+CREATE TABLE LoginRole (
+  LoginId INT PRIMARY KEY,
+  Username VARCHAR(50) NOT NULL,
+  Role VARCHAR(50) NOT NULL
+);
+
+
+[HttpPost]
+public JsonResult Insert(LoginRole loginRole)
+{
+    string query = @"
+        INSERT INTO LoginRole (Username, Role)
+        VALUES (@Username, @Role)";
+
+    string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+    using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+    {
+        myCon.Open();
+        using (SqlCommand myCommand = new SqlCommand(query, myCon))
+        {
+            myCommand.Parameters.AddWithValue("@Username", loginRole.Username);
+            myCommand.Parameters.AddWithValue("@Role", loginRole.Role);
+            myCommand.ExecuteNonQuery();
+        }
+        myCon.Close();
+    }
+
+    return new JsonResult("Added Successfully");
+}

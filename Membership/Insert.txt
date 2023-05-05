@@ -1,0 +1,27 @@
+[HttpPost]
+public JsonResult Post(Membership membership)
+{
+    string query = @"
+        INSERT INTO Membership
+        (MemberName, Email, DateJoined, MembershipLevel, Active)
+        VALUES (@MemberName, @Email, @DateJoined, @MembershipLevel, @Active)";
+
+    string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+    using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+    {
+        myCon.Open();
+        using (SqlCommand myCommand = new SqlCommand(query, myCon))
+        {
+            myCommand.Parameters.AddWithValue("@MemberName", membership.MemberName);
+            myCommand.Parameters.AddWithValue("@Email", membership.Email);
+            myCommand.Parameters.AddWithValue("@DateJoined", membership.DateJoined);
+            myCommand.Parameters.AddWithValue("@MembershipLevel", membership.MembershipLevel);
+            myCommand.Parameters.AddWithValue("@Active", membership.Active);
+
+            myCommand.ExecuteNonQuery();
+        }
+        myCon.Close();
+    }
+
+    return new JsonResult("Added Successfully");
+}
