@@ -169,5 +169,4 @@ CREATE TABLE Staff (
 INSERT INTO Staff (FirstName, LastName, Email, HireDate, Position, EmploymentStatus,ImageName)
 VALUES ('Blendiona', 'Biqkaj', 'blendionabiqkaj3@gmail.com', '2022-01-01', 'Manager', 'Active','blendiona1.png');
 
-select * from Staff
-
+select * from Staff 
